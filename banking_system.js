@@ -23,32 +23,35 @@ class BankAccount {
         }
 
         console.log("loading")
-
+        
         this.#money += numberValue
-
-
+        
+        
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(`Berhasil melakukan deposite sebesar Rp.${numberValue}, ${this.getMoneyInfo()}`)
             }, 3000)
         })
     }
-
+    
     withdraw(value) {
         if (!this.#checkInputIsNumber(value)) {
             throw new Error("input bukan angka")
-
-
+            
+            
         }
-
+        
         let numberValue = parseInt(value)
-
+        
         if (numberValue <= 0) {
             throw new Error("input Harus lebih dari 0")
         }
         if (this.#money < numberValue) {
             throw new Error("saldo kamu kurang")
         }
+
+        console.log("loading")
+        
         this.#money -= numberValue
 
         return new Promise((resolve, reject) => {
