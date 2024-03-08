@@ -23,26 +23,26 @@ class BankAccount {
         }
 
         console.log("loading")
-        
+
         this.#money += numberValue
-        
-        
+
+
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(`Berhasil melakukan deposite sebesar Rp.${numberValue}, ${this.getMoneyInfo()}`)
             }, 3000)
         })
     }
-    
+
     withdraw(value) {
         if (!this.#checkInputIsNumber(value)) {
             throw new Error("input bukan angka")
-            
-            
+
+
         }
-        
+
         let numberValue = parseInt(value)
-        
+
         if (numberValue <= 0) {
             throw new Error("input Harus lebih dari 0")
         }
@@ -51,7 +51,7 @@ class BankAccount {
         }
 
         console.log("loading")
-        
+
         this.#money -= numberValue
 
         return new Promise((resolve, reject) => {
@@ -72,6 +72,7 @@ function loopMenu(user, readline) {
     readline.question("\nPilih Opsi Menu\n1. deposite\n2. withdraw\n0. exit\n\nOption : ", option => {
         switch (parseInt(option)) {
             case 0:
+                console.log("selamat tinggal")
                 readline.close()
                 break
             case 1:
