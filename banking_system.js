@@ -5,8 +5,15 @@ class BankAccount {
         this.#money = 0
     }
 
-    deposite(value) {
+    #checkInputIsNumber(value) {
         if (!Number(value)) {
+            return false
+        }
+        return true
+    }
+
+    deposite(value) {
+        if (!this.#checkInputIsNumber(value)) {
             throw new Error("input not Number")
         }
         this.#money += value
@@ -14,7 +21,7 @@ class BankAccount {
     }
 
     withdraw(value) {
-        if (!Number(value)) {
+        if (!this.#checkInputIsNumber(value)) {
             throw new Error("input not Number")
         }
         this.#money -= value
@@ -24,6 +31,8 @@ class BankAccount {
         return "uang kamu saat ini sebesar " + this.#money
     }
 }
+
+
 
 let user = new BankAccount("akhdan")
 console.log(user.name)
